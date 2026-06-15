@@ -12,4 +12,4 @@ stripped from output filenames, and `__PASCAL__` markers in paths are substitute
 - `node-ts-service` Node, TypeScript and Fastify HTTP service.
 - `strapi-cms-react` Strapi headless CMS plus a React frontend monorepo.
 
-Templates pin a tag (for example `v1.0.0`). Cut a new tag whenever a skeleton changes.
+The platform tracks this repo's default branch (`main`), so a skeleton change ships as soon as it merges to `main`.
