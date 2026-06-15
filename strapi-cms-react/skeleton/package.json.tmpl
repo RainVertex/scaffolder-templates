@@ -1,0 +1,14 @@
+{
+  "name": "${{ values.name }}",
+  "private": true,
+  "version": "0.1.0",
+  "description": "${{ values.description }}",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "web": "npm run dev --workspace apps/web"
+  }
+}

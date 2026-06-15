@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Validate skeleton conventions
+        run: node scripts/validate.mjs
+
+  render-and-build:
+    runs-on: ubuntu-22.04
+    needs: validate
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - template: node-ts-service
+            build: npm run build
+          - template: react-ts-spa
+            build: npm run build
+          - template: strapi-cms-react
+            build: npm run build --workspace apps/web
+    name: render-and-build (${{ matrix.template }})
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Render skeleton with mock values
+        run: node scripts/render-skeleton.mjs "${{ matrix.template }}" "_rendered/${{ matrix.template }}"
+
+      - name: Validate rendered catalog-info.yaml
+        run: |
+          file="_rendered/${{ matrix.template }}/catalog-info.yaml"
+          kind=$(yq e '.kind' "$file")
+          name=$(yq e '.name' "$file")
+          echo "kind=$kind name=$name"
+          case "$kind" in
+            service|api|library|website|database|infrastructure) ;;
+            *) echo "::error::invalid catalog-info kind '$kind' (expected one of the platform VALID_KINDS)"; exit 1 ;;
+          esac
+          if [ -z "$name" ] || [ "$name" = "null" ]; then
+            echo "::error::catalog-info.yaml is missing a name"; exit 1
+          fi
+
+      - name: Validate all rendered YAML parses
+        run: |
+          find "_rendered/${{ matrix.template }}" -type f \( -name '*.yml' -o -name '*.yaml' \) -print0 \
+            | xargs -0 -r -I{} yq e 'true' {} >/dev/null
+
+      - name: Install dependencies
+        working-directory: _rendered/${{ matrix.template }}
+        run: npm install
+
+      - name: Build
+        working-directory: _rendered/${{ matrix.template }}
+        run: ${{ matrix.build }}

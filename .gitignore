@@ -1,0 +1,5 @@
+# Local CI artifacts produced by scripts/render-skeleton.mjs
+_rendered/
+
+# Node tooling
+node_modules/

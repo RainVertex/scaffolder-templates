@@ -1,0 +1,16 @@
+const STRAPI_URL = import.meta.env.VITE_STRAPI_URL ?? "http://localhost:1337";
+
+export default function App() {
+  return (
+    <main>
+      <h1>${{ values.name }}</h1>
+      <p>${{ values.description }}</p>
+      <p>
+        Connected CMS: <code>{STRAPI_URL}</code>
+      </p>
+      <p>
+        Fetch content from Strapi via the helper in <code>src/api.ts</code>.
+      </p>
+    </main>
+  );
+}
