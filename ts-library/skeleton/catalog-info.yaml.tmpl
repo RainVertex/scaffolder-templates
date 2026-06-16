@@ -2,6 +2,7 @@ kind: library
 name: ${{ values.name }}
 description: ${{ values.description }}
 lifecycle: development
+ownerTeamIds: ${{ values.owners | dump }}
 tags:
   - typescript
   - library

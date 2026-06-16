@@ -34,6 +34,7 @@ const repoRoot = path.resolve(import.meta.dirname, "..");
 const values = {
   name: `${templateName}-ci`,
   description: `CI render smoke test for ${templateName}`,
+  owners: [],
 };
 
 const toWords = (s) =>
