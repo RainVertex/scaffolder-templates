@@ -1,8 +1,12 @@
 kind: service
 name: ${{ values.name }}
 description: ${{ values.description }}
+lifecycle: development
 tags:
   - typescript
   - cms
   - strapi
   - react
+metadata:
+  annotations:
+    github.com/language: TypeScript

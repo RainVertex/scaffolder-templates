@@ -1,7 +1,11 @@
 kind: library
 name: ${{ values.name }}
 description: ${{ values.description }}
+lifecycle: development
 tags:
   - typescript
   - library
   - package
+metadata:
+  annotations:
+    github.com/language: TypeScript

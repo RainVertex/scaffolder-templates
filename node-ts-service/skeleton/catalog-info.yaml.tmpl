@@ -1,7 +1,11 @@
 kind: service
 name: ${{ values.name }}
 description: ${{ values.description }}
+lifecycle: development
 tags:
   - typescript
   - node
   - fastify
+metadata:
+  annotations:
+    github.com/language: TypeScript

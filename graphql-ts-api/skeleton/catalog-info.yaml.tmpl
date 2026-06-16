@@ -1,7 +1,11 @@
 kind: api
 name: ${{ values.name }}
 description: ${{ values.description }}
+lifecycle: development
 tags:
   - typescript
   - graphql
   - api
+metadata:
+  annotations:
+    github.com/language: TypeScript

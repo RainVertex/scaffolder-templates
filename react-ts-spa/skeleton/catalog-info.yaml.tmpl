@@ -1,7 +1,11 @@
 kind: website
 name: ${{ values.name }}
 description: ${{ values.description }}
+lifecycle: development
 tags:
   - typescript
   - react
   - frontend
+metadata:
+  annotations:
+    github.com/language: TypeScript
