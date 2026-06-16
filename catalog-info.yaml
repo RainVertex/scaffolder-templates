@@ -1,15 +1,17 @@
-kind: library
+kind: service
 name: scaffolder-templates
-description: "Skeleton fixtures for the HiveDP self-service scaffolder providing templates for React TypeScript SPA, Node TypeScript Fastify service, and Strapi CMS React monorepo."
+description: >-
+  Skeleton fixtures for the HiveDP self-service scaffolder. Each top-level directory holds one
+  template's skeleton, which the `fetch:remote-template` action renders into a new repository.
 ownerTeamIds: []
 repoUrl: https://github.com/RainVertex/scaffolder-templates
 tags:
-  - scaffolder
-  - template
-  - typescript
   - javascript
+  - typescript
   - react
   - nodejs
+  - vite
+  - fastify
   - strapi
-  - cms
-  - hivedp
+  - scaffolder
+  - template
