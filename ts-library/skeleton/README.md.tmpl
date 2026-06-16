@@ -1,0 +1,28 @@
+# ${{ values.name }}
+
+${{ values.description }}
+
+A publishable TypeScript library built with tsup, scaffolded by the platform self-service catalog.
+
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+This emits ESM, CommonJS, and type declarations into `dist`.
+
+## Use
+
+```ts
+import { greet } from "${{ values.name }}";
+
+greet({ name: "world" });
+```

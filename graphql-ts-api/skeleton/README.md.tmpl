@@ -1,0 +1,28 @@
+# ${{ values.name }}
+
+${{ values.description }}
+
+A TypeScript GraphQL API built on GraphQL Yoga, scaffolded by the platform self-service catalog.
+
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+The API is served at http://localhost:4000/graphql.
+
+## Build and run
+
+```bash
+npm run build
+npm start
+```
+
+## Docker
+
+```bash
+docker build -t ${{ values.name }} .
+docker run -p 4000:4000 ${{ values.name }}
+```
