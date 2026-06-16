@@ -1,0 +1,15 @@
+kind: library
+name: scaffolder-templates
+description: >-
+  Skeleton fixtures for the HiveDP self-service scaffolder. Each top-level directory
+  holds one template's `skeleton`, which the `fetch:remote-template` action renders
+  into a new repository. Files are rendered with Nunjucks using the HiveDP `${{ }}`
+  dialect, with a trailing `.tmpl` stripped from output filenames and `__PASCAL__`
+  markers in paths substituted.
+ownerTeamIds: []
+repoUrl: https://github.com/RainVertex/scaffolder-templates
+tags:
+  - javascript
+  - typescript
+  - template
+  - scaffolder
