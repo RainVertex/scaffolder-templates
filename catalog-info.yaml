@@ -1,17 +1,16 @@
 kind: service
 name: scaffolder-templates
-description: >-
-  Skeleton fixtures for the HiveDP self-service scaffolder. Each top-level directory holds one
-  template's skeleton, which the `fetch:remote-template` action renders into a new repository.
+description: "Skeleton fixtures for the HiveDP self-service scaffolder. Each top-level directory holds one template skeleton that the fetch:remote-template action renders into a new repository."
 ownerTeamIds: []
 repoUrl: https://github.com/RainVertex/scaffolder-templates
 tags:
   - javascript
   - typescript
-  - react
-  - nodejs
-  - vite
-  - fastify
-  - strapi
-  - scaffolder
   - template
+  - scaffolder
+  - react
+  - node
+  - fastify
+  - vite
+  - strapi
+  - graphql
