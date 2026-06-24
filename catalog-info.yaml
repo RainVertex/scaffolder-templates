@@ -1,0 +1,11 @@
+kind: service
+name: scaffolder-templates
+description: "Skeleton fixtures for the HiveDP self-service scaffolder, containing template skeletons (e.g., React TS SPA, Node TS service, Strapi CMS React) rendered with Nunjucks."
+ownerTeamIds: []
+repoUrl: "https://github.com/RainVertex/scaffolder-templates"
+tags:
+  - javascript
+  - typescript
+  - templating
+  - scaffolder
+  - nunjucks
