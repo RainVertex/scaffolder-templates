@@ -1,11 +1,10 @@
-kind: infrastructure
+kind: service
 name: scaffolder-templates
-description: "Skeleton fixtures for the HiveDP self-service scaffolder, providing templates for React TS SPA, Node TS service, Strapi CMS React, and others."
+description: "Skeleton fixtures for the HiveDP self-service scaffolder, including templates for React-TS SPA, Node-TS service, Strapi CMS React, and more."
 ownerTeamIds: []
 repoUrl: https://github.com/RainVertex/scaffolder-templates
 tags:
-  - javascript
-  - typescript
-  - scaffolder
-  - monorepo
   - template
+  - scaffolder
+  - typescript
+  - javascript
