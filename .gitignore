@@ -3,3 +3,4 @@ _rendered/
 
 # Node tooling
 node_modules/
+.aider*
