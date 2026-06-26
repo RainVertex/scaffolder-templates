@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.name | kebabCase }}
+  title: ${{ values.name | titleCase }}
+spec:
+  type: service
+  lifecycle: experimental
+  owner: ${{ values.owner }}
