@@ -1,0 +1,43 @@
+${#
+  Scaffolder template: the platform renders this through Nunjucks (HiveDP ${{ }} dialect)
+  before it lands in a generated repo. GitHub Actions ${{ }} expressions are wrapped in
+  ${% raw %} ... {% endraw %} so they survive verbatim. The close tag drops the leading $ on
+  purpose: nunjucks parseRaw hardcodes {% %}, so ${% endraw %} would leak a stray $. This
+  comment and the .tmpl suffix are stripped on render.
+#}
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${% raw %}${{ github.workflow }}-${{ github.ref }}{% endraw %}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Cache npm downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${% raw %}${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}{% endraw %}
+          restore-keys: |
+            ${% raw %}${{ runner.os }}-npm-{% endraw %}
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Build Docker image
+        run: docker build -t app:ci .

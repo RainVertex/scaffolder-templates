@@ -1,0 +1,28 @@
+# ${{ values.name }}
+
+${{ values.description }}
+
+A TypeScript HTTP service built on Express, scaffolded by the platform self-service catalog.
+
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+The service listens on http://localhost:3000 with a health check at `/health`.
+
+## Build and run
+
+```bash
+npm run build
+npm start
+```
+
+## Docker
+
+```bash
+docker build -t ${{ values.name }} .
+docker run -p 3000:3000 ${{ values.name }}
+```
